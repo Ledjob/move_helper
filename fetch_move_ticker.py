@@ -1,10 +1,13 @@
 # Python
-
+from datetime import date
 import ccxt as ccxt
 import requests
 
+today = date.today()
+
+d1 = today.strftime("%m%d")
 rest =  'https://ftx.com/api'
-future_name = 'BTC-MOVE-0516'
+future_name = 'BTC-MOVE-' + d1
 stats =f'/futures/{future_name}/stats'
 
 def print_stats():
@@ -23,8 +26,8 @@ def print_ftx_move_ticker():
     dict_info = {key:value for key, value in ticker['info'].items() if key in required_fields2}
     dict2 = {key:value for key, value in ticker.items() if key in required_fields}
     #print(ftx.fetch_ticker('BTC-MOVE-0414'))
-    print(dict2)
-    print(dict_info)
+    print("dict2", dict2)
+    print("info", dict_info)
 
 if __name__ == '__main__':
 
